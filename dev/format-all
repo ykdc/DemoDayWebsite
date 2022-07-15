@@ -1,0 +1,15 @@
+# HTML Linter
+echo "Linting HTML Files"
+./node_modules/.bin/htmlhint .
+
+# JavaScript Linter
+echo "Linting JavaScript Files"
+./node_modules/.bin/eslint .
+
+# CSS Linter
+echo "Linting CSS files"
+./node_modules/.bin/csslint .
+
+# Markdown Linter
+echo "Linting Markdown files"
+./node_modules/.bin/markdownlint --ignore node_modules .
