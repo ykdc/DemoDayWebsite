@@ -27,6 +27,8 @@ jobs:
         ls "${{ github.actor }}"
     - name: Push generated template
       run: |
+        git config --global user.email "sparkles@sagardsaxena.com"
+        git config --global user.name "Sparkles"
         git add "${{ github.actor }}"
         git commit -m "Automated template generation triggered by ${{ github.actor }}"
         git push
