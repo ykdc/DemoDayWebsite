@@ -4,7 +4,7 @@ name: Generate Base
 
 # Controls when the action will run. Workflow runs when manually triggered using the UI
 # or API.
-on: [workflow_dispatch, push]
+on: [workflow_dispatch]
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -25,3 +25,8 @@ jobs:
       run: |
         cp -r template "${{ github.actor }}"
         ls "${{ github.actor }}"
+    - name: Push generated template
+      run: |
+        git add "${{ github.actor }}"
+        git commit -m "Automated template generation triggered by ${{ github.actor }}"
+        git push
