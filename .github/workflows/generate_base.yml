@@ -1,0 +1,34 @@
+# This workflow generates a base template for you to use!
+
+name: Generate Base
+
+# Controls when the action will run. Workflow runs when manually triggered using the UI
+# or API.
+on: [workflow_dispatch]
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "generate_template"
+  generate_template:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+    # checkout the repository
+    - uses: actions/checkout@v3
+    # testing
+    - name: "git branch"
+      run: git branch
+    # Runs a single command using the runners shell
+    - name: Create a new template
+      run: |
+        cp -r template "${{ github.actor }}"
+        ls "${{ github.actor }}"
+    - name: Push generated template
+      run: |
+        git config --global user.email "sparkles@sagardsaxena.com"
+        git config --global user.name "Sparkles"
+        git add "${{ github.actor }}"
+        git commit -m "Sparkles: automated template generation triggered by ${{ github.actor }}"
+        git push
